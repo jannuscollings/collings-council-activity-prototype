@@ -64,6 +64,12 @@ svg.lucide{width:17px;height:17px;stroke-width:2;flex-shrink:0}.btn svg.lucide,.
 #taskRows .empty p{margin:0 0 16px;line-height:1.55}
 @media(max-width:900px){.layout > main{margin:0}}
 .walkthrough-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:18px 0 2px;padding:16px 18px;background:linear-gradient(110deg,#fff 65%,#f3fcfd);border:1px solid #a5e5ea;border-radius:12px;box-shadow:0 3px 14px rgba(22,111,121,.06);animation:walkthroughGlow 4s ease-in-out infinite}
+.layout > main{max-width:none;margin:0;padding-left:20px}
+.walkthrough-strip{position:relative}
+.walkthrough-hint{position:absolute;z-index:4;left:17px;bottom:calc(100% + 10px);width:min(350px,calc(100vw - 54px));padding:13px 15px;background:#102e37;border:1px solid #2c636b;border-radius:10px;box-shadow:0 12px 32px #09262c3d;color:#d3e3e5;font-size:11.5px;line-height:1.45;opacity:0;visibility:hidden;transform:translateY(5px);transition:opacity .16s,transform .16s,visibility .16s;pointer-events:none}
+.walkthrough-hint strong{display:block;color:#fff;font-size:12px;margin-bottom:4px}.walkthrough-hint::after{content:"";position:absolute;top:100%;left:25px;border:7px solid transparent;border-top-color:#102e37}
+.walkthrough-strip:hover .walkthrough-hint,.walkthrough-strip:focus-within .walkthrough-hint{opacity:1;visibility:visible;transform:translateY(0)}
+@media(max-width:900px){.layout > main{padding-left:18px}}@media(max-width:680px){.layout > main{padding-left:15px}}
 .walkthrough-strip:hover,.walkthrough-strip:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px rgba(45,200,219,.16),0 10px 30px rgba(22,111,121,.15);animation-play-state:paused}
 @keyframes walkthroughGlow{0%,100%{box-shadow:0 3px 14px rgba(22,111,121,.06)}50%{box-shadow:0 0 0 4px rgba(45,200,219,.14),0 0 24px rgba(45,200,219,.23)}}
 @media(prefers-reduced-motion:reduce){.walkthrough-strip{animation:none}}
@@ -105,7 +111,7 @@ svg.lucide{width:17px;height:17px;stroke-width:2;flex-shrink:0}.btn svg.lucide,.
       <div class="stat"><div class="statlabel">Connection</div><div class="statvalue" style="font-size:18px;margin-top:8px">Today, 8:42 am</div><div class="statfoot">No live feed connected</div></div>
     </section>
     
-    <div class="walkthrough-strip"><div class="walkthrough-copy"><span class="walkthrough-icon" data-lucide="route"></span><div><strong>Agent walkthrough</strong><span>Follow one sample application from source to property match to follow-up.</span></div></div><button class="btn primary" id="startWalkthrough">Review sample flow <i data-lucide="arrow-right"></i></button></div>
+    <div class="walkthrough-strip" tabindex="0" aria-describedby="walkthroughHint"><div class="walkthrough-copy"><span class="walkthrough-icon" data-lucide="route"></span><div><strong>Agent walkthrough</strong><span>Follow one sample application from source to property match to follow-up.</span></div></div><button class="btn primary" id="startWalkthrough">Review sample flow <i data-lucide="arrow-right"></i></button><div class="walkthrough-hint" id="walkthroughHint" role="tooltip"><strong>See how an agent reviews a council application</strong>Follow a fictional record through source review, property matching and a sample follow-up task. This guided demo makes no live CRM changes.</div></div>
     <div class="tabs" id="tabs"></div>
     <div class="filters">
       <label class="search"><span data-lucide="search"></span> <input id="search" placeholder="Search address or application"></label>
